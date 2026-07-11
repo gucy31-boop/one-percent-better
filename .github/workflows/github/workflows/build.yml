@@ -1,0 +1,51 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Java einrichten (für Gradle)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Flutter SDK einrichten
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+          channel: 'stable'
+
+      - name: Abhängigkeiten installieren
+        run: flutter pub get
+
+      - name: Statische Analyse (nicht build-abbrechend)
+        run: flutter analyze || true
+
+      - name: Icons & Splash Screen generieren
+        run: |
+          dart run flutter_launcher_icons
+          dart run flutter_native_splash:create
+
+      - name: Debug-APK bauen
+        run: flutter build apk --debug
+
+      - name: Release-APK bauen (unsigniert / Debug-signiert ohne key.properties)
+        run: flutter build apk --release
+
+      - name: APKs als Artifact hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: one-percent-better-apks
+          path: |
+            build/app/outputs/flutter-apk/app-debug.apk
+            build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30
