@@ -1,0 +1,12 @@
+# Kopiere diese Datei zu "key.properties" (im android/-Ordner) und
+# trage deine echten Keystore-Daten ein. NIEMALS ins Git-Repository
+# committen (siehe .gitignore).
+#
+# Keystore erzeugen:
+# keytool -genkey -v -keystore ~/one-percent-better-key.jks \
+#   -keyalg RSA -keysize 2048 -validity 10000 -alias one_percent_better
+
+storePassword=DEIN_STORE_PASSWORT
+keyPassword=DEIN_KEY_PASSWORT
+keyAlias=one_percent_better
+storeFile=/absoluter/pfad/zu/one-percent-better-key.jks

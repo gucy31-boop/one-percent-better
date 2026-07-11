@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash Screen Hintergrund: einfarbig Schwarz, dazu das App-Logo
+     zentriert (wird von flutter_native_splash beim Build zusätzlich
+     mit dem echten Icon ergänzt, siehe README). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/black" />
+</layer-list>

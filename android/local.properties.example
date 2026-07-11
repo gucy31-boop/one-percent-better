@@ -1,0 +1,10 @@
+# Kopiere diese Datei zu "local.properties" und passe die Pfade an
+# dein System an. local.properties wird von Flutter automatisch
+# generiert, sobald du `flutter pub get` bzw. `flutter run` ausführst
+# - i. d. R. musst du hier nichts manuell eintragen.
+
+sdk.dir=/pfad/zu/deinem/Android/sdk
+flutter.sdk=/pfad/zu/deinem/flutter
+flutter.buildMode=release
+flutter.versionName=1.0.0
+flutter.versionCode=1
