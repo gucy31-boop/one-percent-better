@@ -29,7 +29,7 @@ if (hasKeystoreProperties) {
 
 android {
     namespace "com.onepercentbetter.app"
-    compileSdk 34
+    compileSdkVersion 36
     ndkVersion flutter.ndkVersion
 
     compileOptions {
